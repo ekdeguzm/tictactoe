@@ -1,0 +1,11 @@
+body {
+  font-family: 'Arial', sans-serif;
+  text-align: center;
+}
+
+#board {
+  display: grid;
+  grid-template-columns: repeat(3, 100px); /* Adjust the size as needed */
+  grid-gap: 5px; /* Adjust the gap between cells */
+  margin-top: 20px;
+}

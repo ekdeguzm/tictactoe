@@ -1,11 +1,29 @@
+/* styles.css */
 body {
   font-family: 'Arial', sans-serif;
   text-align: center;
+  background-color: #f8f8f8;
+  margin: 0;
 }
 
-#board {
+.container {
   display: grid;
   grid-template-columns: repeat(3, 100px); /* Adjust the size as needed */
+  grid-template-rows: repeat(3, 100px);
   grid-gap: 5px; /* Adjust the gap between cells */
   margin-top: 20px;
+}
+
+.cell {
+  background-color: #fff;
+  border: 2px solid #ccc;
+  font-size: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+}
+
+.cell:hover {
+  background-color: #e0e0e0;
 }

@@ -44,13 +44,47 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   }
 
-  // Function to check for a winner
-  function checkWinner(row, col) {
-    // Implement your logic to check for a winner
-    // For a simple example, you can check the row, column, and diagonals
-    // Return true if there is a winner, otherwise false
-    return false;
+// Function to check for a winner
+function checkWinner(row, col) {
+  // Check the row
+  if (
+    checkLine(0, 0, 0, 1, 0, 2) ||
+    checkLine(1, 0, 1, 1, 1, 2) ||
+    checkLine(2, 0, 2, 1, 2, 2)
+  ) {
+    return true;
   }
+
+  // Check the column
+  if (
+    checkLine(0, 0, 1, 0, 2, 0) ||
+    checkLine(0, 1, 1, 1, 2, 1) ||
+    checkLine(0, 2, 1, 2, 2, 2)
+  ) {
+    return true;
+  }
+
+  // Check the diagonals
+  if (checkLine(0, 0, 1, 1, 2, 2) || checkLine(0, 2, 1, 1, 2, 0)) {
+    return true;
+  }
+
+  return false;
+}
+
+// Helper function to check a line for a winner
+function checkLine(row1, col1, row2, col2, row3, col3) {
+  const cell1 = document.querySelector(`[data-row="${row1}"][data-col="${col1}"]`);
+  const cell2 = document.querySelector(`[data-row="${row2}"][data-col="${col2}"]`);
+  const cell3 = document.querySelector(`[data-row="${row3}"][data-col="${col3}"]`);
+
+  return (
+    cell1.textContent.trim() !== '' &&
+    cell1.textContent === cell2.textContent &&
+    cell1.textContent === cell3.textContent
+  );
+}
+
 
   // Function to check for a tie
   function checkTie() {

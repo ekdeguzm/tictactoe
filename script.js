@@ -2,6 +2,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const board = document.getElementById('board');
   let currentPlayer = 'X';
   let gameStarted = false;
+  let gameOver = false; // Add a variable to track game state
 
   // Function to create the board
   function createBoard() {
@@ -21,6 +22,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to handle cell click
   function handleCellClick(event) {
+    if (gameOver) return; // Check if the game is over
+
     const clickedCell = event.target;
     const row = clickedCell.getAttribute('data-row');
     const col = clickedCell.getAttribute('data-col');
@@ -33,7 +36,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Check for a winner or a tie
       if (checkWinner(row, col)) {
-        popUpMenu.popupBox('YOU WIN!');
+        // popUpMenu.popupBox('YOU WIN!');
+        announceWinner();
       } else if (checkTie()) {
         popUpMenu.popupBox('ITS A TIE');
         resetGame();
@@ -118,6 +122,7 @@ document.addEventListener('DOMContentLoaded', () => {
   function resetGame() {
     // Clear the board and reset any game state variables
     currentPlayer = 'X';
+    gameOver = false; // Reset the game state
     const cells = document.querySelectorAll('.cell');
     cells.forEach(cell => {
       cell.textContent = '';
@@ -125,43 +130,56 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  function announceWinner() {
+    const winner = currentPlayer === 'X' ? 'Player X' : 'Player O';
+    popUpMenu.popupBox(`${winner} wins!`);
+    gameOver = true; // Set the game state to over
+  }
+
+  const popUpMenu = (() => {
+    const resetPage = () => {
+        location.reload();
+    }
+  
+    //function that builds Pop-up for winning or losing round
+  const popupBox = (outcome) => {
+    const overlay = document.createElement('div');
+    overlay.className = 'overlay';
+
+    const popup = document.createElement('div');
+    popup.className = 'popup-box';
+
+    const result = document.createElement('div');
+    result.id = 'win-lose';
+    result.textContent = outcome;
+
+    const replayBtn = document.createElement('button');
+    replayBtn.id = 'play-again-btn';
+    replayBtn.textContent = 'Play Again?';
+
+    replayBtn.addEventListener('click', resetPage);
+
+    popup.appendChild(result);
+    popup.appendChild(replayBtn);
+
+    overlay.appendChild(popup);
+
+    document.body.appendChild(overlay);
+  };
+
+return {
+  popupBox,
+};
+
+  
+  
+    return {
+        popupBox
+    }
+  })();
+
   // Create the board when the page loads
   createBoard();
 });
 
-const popUpMenu = (() => {
-  const resetPage = () => {
-      location.reload();
-  }
 
-  //function that builds Pop-up for winning or losing round
-  const popupBox = (outcome) => {
-      const overlay = document.createElement('div');
-      overlay.className = 'overlay';
-
-      const popup = document.createElement('div');
-      popup.className = 'popup-box';
-
-      const result = document.createElement('div');
-      result.id = 'win-lose';
-      result.textContent = outcome;
-
-      const replayBtn = document.createElement('button');
-      replayBtn.id = 'play-again-btn';
-      replayBtn.textContent = 'Play Again?';
-
-      replayBtn.addEventListener('click', resetPage);
-
-      popup.appendChild(result);
-      popup.appendChild(replayBtn);
-
-      overlay.appendChild(popup)
-
-      document.body.appendChild(overlay);
-  };
-
-
-  return {
-      popupBox
-  }
-})();

@@ -36,11 +36,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Check for a winner or a tie
       if (checkWinner(row, col)) {
-        // popUpMenu.popupBox('YOU WIN!');
         announceWinner();
       } else if (checkTie()) {
-        popUpMenu.popupBox('ITS A TIE');
-        resetGame();
+        announceTie();
       } else {
         // Switch to the other player after a short delay
         setTimeout(() => {
@@ -110,7 +108,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-
   // Function to check for a tie
   function checkTie() {
     // Implement your logic to check for a tie
@@ -133,6 +130,11 @@ document.addEventListener('DOMContentLoaded', () => {
   function announceWinner() {
     const winner = currentPlayer === 'X' ? 'Player X' : 'Player O';
     popUpMenu.popupBox(`${winner} wins!`);
+    gameOver = true; // Set the game state to over
+  }
+
+  function announceTie() {
+    popUpMenu.popupBox(`It's a Tie!`);
     gameOver = true; // Set the game state to over
   }
 
@@ -170,11 +172,8 @@ document.addEventListener('DOMContentLoaded', () => {
 return {
   popupBox,
 };
-
-  
-  
     return {
-        popupBox
+      popupBox
     }
   })();
 

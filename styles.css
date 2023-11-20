@@ -27,3 +27,7 @@ body {
 .cell:hover {
   background-color: #e0e0e0;
 }
+
+.winning-cell {
+  background-color: yellow; 
+}

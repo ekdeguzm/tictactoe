@@ -34,9 +34,8 @@ document.addEventListener('DOMContentLoaded', () => {
       // Check for a winner or a tie
       if (checkWinner(row, col)) {
         popUpMenu.popupBox('YOU WIN!');
-        resetGame();
       } else if (checkTie()) {
-        alert("It's a tie!");
+        popUpMenu.popupBox('ITS A TIE');
         resetGame();
       } else {
         // Switch to the other player after a short delay

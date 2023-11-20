@@ -33,7 +33,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Check for a winner or a tie
       if (checkWinner(row, col)) {
-        alert(`Player ${currentPlayer} wins!`);
+        popUpMenu.popupBox('YOU WIN!');
         resetGame();
       } else if (checkTie()) {
         alert("It's a tie!");
@@ -107,6 +107,7 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
+
   // Function to check for a tie
   function checkTie() {
     // Implement your logic to check for a tie
@@ -128,3 +129,40 @@ document.addEventListener('DOMContentLoaded', () => {
   // Create the board when the page loads
   createBoard();
 });
+
+const popUpMenu = (() => {
+  const resetPage = () => {
+      location.reload();
+  }
+
+  //function that builds Pop-up for winning or losing round
+  const popupBox = (outcome) => {
+      const overlay = document.createElement('div');
+      overlay.className = 'overlay';
+
+      const popup = document.createElement('div');
+      popup.className = 'popup-box';
+
+      const result = document.createElement('div');
+      result.id = 'win-lose';
+      result.textContent = outcome;
+
+      const replayBtn = document.createElement('button');
+      replayBtn.id = 'play-again-btn';
+      replayBtn.textContent = 'Play Again?';
+
+      replayBtn.addEventListener('click', resetPage);
+
+      popup.appendChild(result);
+      popup.appendChild(replayBtn);
+
+      overlay.appendChild(popup)
+
+      document.body.appendChild(overlay);
+  };
+
+
+  return {
+      popupBox
+  }
+})();

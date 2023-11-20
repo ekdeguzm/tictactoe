@@ -29,6 +29,7 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!clickedCell.textContent.trim()) {
       // Update cell with current player's symbol
       clickedCell.textContent = currentPlayer;
+      clickedCell.classList.add('clicked'); // Add the 'clicked' class
 
       // Check for a winner or a tie
       if (checkWinner(row, col)) {
@@ -54,8 +55,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to make a simple computer move
   function makeComputerMove() {
-    // You can implement more sophisticated AI here
-    // For now, let's make a random move
 
     const emptyCells = document.querySelectorAll('.cell:not(.clicked)');
     if (emptyCells.length > 0) {
@@ -65,6 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
       randomCell.classList.add('clicked');
     }
   }
+
 
   // Function to check for a winner
   function checkWinner(row, col) {

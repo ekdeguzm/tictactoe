@@ -110,9 +110,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Function to check for a tie
   function checkTie() {
-    // Implement your logic to check for a tie
-    // Return true if it's a tie, otherwise false
-    return false;
+    const cells = document.querySelectorAll('.cell');
+    for (const cell of cells) {
+      if (!cell.textContent.trim()) {
+        // If any cell is not filled, the game is not a tie
+        return false;
+      }
+    }
+    // If all cells are filled and there's no winner, it's a tie
+    return true;
   }
 
   // Function to reset the game

@@ -32,10 +32,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Check for a winner or a tie
       if (checkWinner(row, col)) {
-        setTimeout(() => {
-          alert(`Player ${currentPlayer} wins!`);
-          resetGame();
-      }, 500); // Adjust the delay time as needed
         alert(`Player ${currentPlayer} wins!`);
         resetGame();
       } else if (checkTie()) {
@@ -89,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
     );
   }
 
-
   // Function to check for a tie
   function checkTie() {
     // Implement your logic to check for a tie
@@ -105,21 +100,6 @@ document.addEventListener('DOMContentLoaded', () => {
     cells.forEach(cell => (cell.textContent = ''));
   }
 
-  // Function to start the game
-  function startGame() {
-    const playerXRadio = document.getElementById('playerX');
-    const playerORadio = document.getElementById('playerO');
-
-    // Set the currentPlayer based on the selected radio button
-    currentPlayer = playerXRadio.checked ? 'X' : 'O';
-
-    if (!gameStarted) {
-      createBoard();
-      gameStarted = true;
-    }
-  }
-
-  // Add click event listener to the "Start Game" button
-  const startButton = document.querySelector('button');
-  startButton.addEventListener('click', startGame);
+  // Create the board when the page loads
+  createBoard();
 });

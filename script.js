@@ -38,9 +38,31 @@ document.addEventListener('DOMContentLoaded', () => {
         alert("It's a tie!");
         resetGame();
       } else {
-        // Switch to the other player
-        currentPlayer = currentPlayer === 'X' ? 'O' : 'X';
+        // Switch to the other player after a short delay
+        setTimeout(() => {
+          currentPlayer = 'O';
+
+          // Make a simple computer move
+          makeComputerMove();
+
+          // Switch back to the player
+          currentPlayer = 'X';
+        }, 500); // Adjust the delay as needed
       }
+    }
+  }
+
+  // Function to make a simple computer move
+  function makeComputerMove() {
+    // You can implement more sophisticated AI here
+    // For now, let's make a random move
+
+    const emptyCells = document.querySelectorAll('.cell:not(.clicked)');
+    if (emptyCells.length > 0) {
+      const randomIndex = Math.floor(Math.random() * emptyCells.length);
+      const randomCell = emptyCells[randomIndex];
+      randomCell.textContent = currentPlayer;
+      randomCell.classList.add('clicked');
     }
   }
 
@@ -97,7 +119,10 @@ document.addEventListener('DOMContentLoaded', () => {
     // Clear the board and reset any game state variables
     currentPlayer = 'X';
     const cells = document.querySelectorAll('.cell');
-    cells.forEach(cell => (cell.textContent = ''));
+    cells.forEach(cell => {
+      cell.textContent = '';
+      cell.classList.remove('clicked');
+    });
   }
 
   // Create the board when the page loads

@@ -88,7 +88,10 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Check the diagonals
-    if (checkLine(0, 0, 1, 1, 2, 2) || checkLine(0, 2, 1, 1, 2, 0)) {
+    if (
+      checkLine(0, 0, 1, 1, 2, 2) || 
+      checkLine(0, 2, 1, 1, 2, 0)
+      ) {
       return true;
     }
 

@@ -1,6 +1,6 @@
 /* styles.css */
 body {
-  font-family: 'Arial', sans-serif;
+  font-family: monospace;
   text-align: center;
   background-color: #f8f8f8;
   margin: 0;
@@ -34,3 +34,52 @@ body {
 .winning-cell {
   background-color: yellow; 
 }
+
+.popup-box {
+  width: 25rem;
+  height: 40rem;
+  background-color: rgb(215, 215, 215);
+  position: absolute;
+  place-self: center;
+  border: 2px solid black;
+  border-radius: 0rem;
+  opacity: 0.9;
+  display: flex;
+  flex-direction: column;
+  transition: .5s;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.overlay {
+  font-family: monospace;
+  position: absolute;
+  /* Positioning and size */
+  display: grid;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(128, 128, 128, 0.5);
+  z-index: 2;
+}
+
+#win-lose {
+  font-size: 2rem;
+}
+
+#play-again-btn {
+  height: 5rem;
+  width: 100%;
+  border: solid black;
+  border-left: none;
+  border-right: none;
+}
+
+#play-again-btn:hover {
+  background-color: rgb(115, 168, 236);
+}
+
+#play-again-btn:active {
+  background-color: rgb(115, 168, 236);
+  }

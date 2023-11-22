@@ -186,9 +186,6 @@ document.addEventListener('DOMContentLoaded', () => {
 return {
   popupBox,
 };
-    return {
-      popupBox
-    }
   })();
 
   // Create the board when the page loads

@@ -12,10 +12,9 @@ body {
 
 .container {
   display: grid;
-  grid-template-columns: repeat(3, 100px); /* Adjust the size as needed */
-  grid-template-rows: repeat(3, 100px);
-  grid-gap: 5px; /* Adjust the gap between cells */
-  margin-top: 20px;
+  grid-template-columns: repeat(3, 200px); /* Double the size to 200px */
+  grid-template-rows: repeat(3, 200px);
+  grid-gap: 10px; /* Increase the gap between cells */
 }
 
 .cell {

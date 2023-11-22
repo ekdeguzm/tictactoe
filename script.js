@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     // Check if the cell is already filled
     if (!clickedCell.textContent.trim()) {
-      // Update cell with current player's symbol
+      // Update cell with the current player's symbol
       clickedCell.textContent = currentPlayer;
       clickedCell.classList.add('clicked'); // Add the 'clicked' class
 
@@ -47,8 +47,13 @@ document.addEventListener('DOMContentLoaded', () => {
           // Make a simple computer move
           makeComputerMove();
 
-          // Switch back to the player
-          currentPlayer = 'X';
+          // Check for a winner after the computer move
+          if (checkWinner(row, col)) {
+            announceWinner();
+          } else {
+            // Switch back to the player
+            currentPlayer = 'X';
+          }
         }, 500); // Adjust the delay as needed
       }
     }

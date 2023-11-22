@@ -43,10 +43,10 @@ body {
   place-self: center;
   border: 2px solid black;
   border-radius: 0rem;
-  opacity: 0.9;
+  opacity: 0.6;
   display: flex;
   flex-direction: column;
-  transition: 1s;
+  transition: 5s;
   justify-content: space-around;
   align-items: center;
 }

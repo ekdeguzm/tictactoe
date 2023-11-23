@@ -31,6 +31,10 @@ body {
   background-color: #e0e0e0;
 }
 
+.cell>div:hover {
+  cursor: pointer;
+}
+
 .winning-cell {
   background-color: yellow; 
 }

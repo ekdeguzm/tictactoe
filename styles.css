@@ -58,7 +58,7 @@ body {
 }
 
 .overlay {
-  font-family: monospace;
+  font-family: 'Fredoka One';
   position: absolute;
   /* Positioning and size */
   display: grid;
@@ -75,7 +75,7 @@ body {
 }
 
 #play-again-btn {
-  font-family: monospace;
+  font-family: 'Fredoka One';
   font-size: larger;
   height: 5rem;
   width: 100%;

@@ -3,6 +3,7 @@ document.addEventListener('DOMContentLoaded', () => {
   let currentPlayer = 'X';
   let gameStarted = false;
   let gameOver = false; // Add a variable to track game state
+  let test = true;
 
   // Function to create the board
   function createBoard() {
